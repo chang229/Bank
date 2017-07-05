@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		div{border:solid 1px red;margin-bottom:10px;}
+		div{width:50px;background:red;opacity:0;margin-bottom:10px;position:relative;}
 	</style>
 </head>
 <body>
@@ -19,7 +19,11 @@
 <script type="text/javascript" src="./js/Bank.on.js"></script>
 <script type="text/javascript" src="./js/Bank.css.js"></script>
 <script type="text/javascript" src="./js/Bank.attr.js"></script>
+<script type="text/javascript" src="./js/Bank.animate.js"></script>
+<!-- <script type="text/javascript" src="./node_modules/jquery/tmp/jquery.js"></script> -->
 <script type="text/javascript">
-	console.log($("div").toggleClass("p5"));
+$("button").on("click",function(){
+	$("div").animate({"width":"200px","height":"200px","opacity":1},2000,function(){console.log("动画执行结束")});
+});
 </script>
 </html>
