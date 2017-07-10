@@ -95,4 +95,15 @@
 			});
 		};
 	};
+	//val方法获取文本框的value值
+	Bank.fn.val = function(){
+		var ages = arguments;
+		if(ages.length === 0){
+			return Bank.getAttr(this[0],"value");
+		}else{
+			return this.each(function(i,v){
+				Bank.setAttr(v,"value",ages[0]);
+			});
+		};
+	};
 })(window)

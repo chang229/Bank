@@ -47,4 +47,10 @@
 		push.apply(rest, temp);
 		return rest;
 	};
+	// 设置文本内容
+	Bank.fn.html = function(txt){
+		return this.each(function(i,v){
+			v.innerHTML = txt;
+		});
+	};
 })(window)

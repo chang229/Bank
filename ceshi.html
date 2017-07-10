@@ -4,14 +4,31 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		div{width:50px;background:red;opacity:0;margin-bottom:10px;position:relative;}
+		*{margin: 0;padding: 0;list-style:none;}
+		.contener{width:500px;margin:100px auto 0;background:blue}
+		.contener li{height:50px;font-size:24px;line-height:50px;color:#fff;}
+		.contener li input{float:left;width:398px;height:48px;border:solid 1px #ccc}
+		.contener li button{float:right;width:100px;height:50px;border:0;outline:none;background:orange;font-weight:bold;}
+		.contener span{width:30%;color:#fff;text-align:center;}
 	</style>
 </head>
 <body>
-	<div>div</div>
-	<div class="p p1 p4">div</div>
-	<div class="p p1 p4">div</div>
-	<button>移除事件</button>
+	<div class="contener">
+		<ul>
+			<li class="chaxun">
+				<input type="text" placeholder="请输入要查询的城市名称" id="ipt"/>
+				<button id="btn">查询</button>
+			</li>
+		</ul>
+		<div>
+			<span id="cityName"></span>
+			<span id="cityId"></span>
+			<span id="date"></span>
+			<span id="week"></span>
+			<span id="weather"></span>
+			<span id="temp"></span>
+		</div>
+	</div>
 </body>
 <script type="text/javascript" src="./js/Bank.core.js"></script>
 <script type="text/javascript" src="./js/Bank.init.js"></script>
@@ -20,10 +37,36 @@
 <script type="text/javascript" src="./js/Bank.css.js"></script>
 <script type="text/javascript" src="./js/Bank.attr.js"></script>
 <script type="text/javascript" src="./js/Bank.animate.js"></script>
+<script	type="text/javascript" src="./js/Bank.ajax.js"></script>
 <!-- <script type="text/javascript" src="./node_modules/jquery/tmp/jquery.js"></script> -->
 <script type="text/javascript">
-$("button").on("click",function(){
-	$("div").animate({"width":"200px","height":"200px","opacity":1},2000,function(){console.log("动画执行结束")});
-});
+	$("#btn").on("click",function(){
+		var txt = $("#ipt").val();
+		if(!txt){
+			alert("请输入要查询的城市名称");
+			return false;
+		};
+		$.ajax({
+			type:"get",
+			url:"http://api.jisuapi.com/weather/query",
+			data:{"appkey":"170e5ae0c3549a0d","city":txt},
+			dataType:"jsonp",
+			success:function(data){
+				console.log(data);
+				if(data.status === "202"){
+					alert(data.msg);
+					return false;
+				};
+				$(".contener span").css({"display":"inline-block","width":"30%","lineHeight":"30px"});
+				$("#cityName").html( data.result.city );
+				$("#cityId").html( "城市ID：" + data.result.cityid );
+				$("#date").html( "日期：" + data.result.date );
+				$("#week").html( data.result.week );
+				$("#weather").html( "天气：" + data.result.weather );
+				$("#temp").html( "实时气温：" + data.result.temp );
+				$("#ipt").val("");
+			}
+		})
+	})
 </script>
 </html>
