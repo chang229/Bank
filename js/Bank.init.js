@@ -14,7 +14,7 @@
 				return this;
 			} else {
 				// 选择器字符串
-				push.apply(this,Bank.select(selector));
+				push.apply(this, Bank.select(selector));
 				return this;
 			};
 		};
@@ -27,6 +27,12 @@
 		if (selector.type === "Bank") {
 			push.apply(this, selector);
 			return this;
+		};
+		// 处理函数
+		if (typeof selector === "function") {
+			window.onload = function() {
+				selector();
+			};
 		};
 	};
 	// 改变init的原型对象，可以继承Bank.fn的方法

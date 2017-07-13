@@ -30,11 +30,24 @@
 				return Bank(this[this.length + num]);
 			}
 		},
-		pushStrok:function(newObj){
+		// index方法，目前仅限于元素有父元素时使用
+		index: function() {
+			var i, parent = this.parent();
+			if (parent[0] === document.body) {
+				return -1;
+			};
+			var arr = parent.child();
+			for (i = 0; i < arr.length; i++) {
+				if (arr[i] == this[0]) {
+					return i;
+				};
+			};
+		},
+		pushStrok: function(newObj) {
 			newObj.prevObj = this;
 			return newObj;
 		},
-		end:function(){
+		end: function() {
 			return this.prevObj || this;
 		}
 	};
@@ -85,10 +98,10 @@
 		return rest;
 	};
 	// 去除重复元素
-	Bank.unique = function(array){
+	Bank.unique = function(array) {
 		var rest = [];
-		for( var  i = 0 ; i < array.length; i++ ){
-			if(rest.indexOf(array[i]) === -1){
+		for (var i = 0; i < array.length; i++) {
+			if (rest.indexOf(array[i]) === -1) {
 				rest.push(array[i]);
 			};
 		};
