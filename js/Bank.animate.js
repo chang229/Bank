@@ -55,4 +55,4 @@
 			Bank.animate(v,obj,speed,fn);
 		});
 	};
-})(window)
+})(window);

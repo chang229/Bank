@@ -30,17 +30,21 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="./js/Bank.core.js"></script>
+<!-- <script type="text/javascript" src="./js/Bank.core.js"></script>
 <script type="text/javascript" src="./js/Bank.init.js"></script>
 <script type="text/javascript" src="./js/Bank.dom.js"></script>
 <script type="text/javascript" src="./js/Bank.on.js"></script>
 <script type="text/javascript" src="./js/Bank.css.js"></script>
 <script type="text/javascript" src="./js/Bank.attr.js"></script>
 <script type="text/javascript" src="./js/Bank.animate.js"></script>
-<script	type="text/javascript" src="./js/Bank.ajax.js"></script>
-<!-- <script type="text/javascript" src="./node_modules/jquery/tmp/jquery.js"></script> -->
+<script	type="text/javascript" src="./js/Bank.ajax.js"></script> -->
+<script type="text/javascript" src="./dist/Bank.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#box").on("click",function(){
+		console.log("box");
+	});
+	$("#box").trigger("click");
 	$("#btn").on("click",function(){
 		var txt = $("#ipt").val();
 		if(!txt){

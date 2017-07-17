@@ -1,9 +1,11 @@
 // 选择器模块
 (function(window) {
-	var arr = [],
+	var Bank = window.Bank,
+		$ = Bank,
+		arr = [],
 		push = arr.push,
 		slice = arr.slice;
-	Bank.fn.init = function(selector) {
+	var init = Bank.fn.init = function(selector) {
 		// 处理null,undefined,"",直接返回
 		if (!selector) return this;
 		// 处理字符串
@@ -36,5 +38,5 @@
 		};
 	};
 	// 改变init的原型对象，可以继承Bank.fn的方法
-	Bank.fn.init.prototype = Bank.fn;
-})(window)
+	init.prototype = Bank.fn;
+})(window);

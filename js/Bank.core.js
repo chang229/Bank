@@ -115,4 +115,4 @@
 	};
 	// 抛出对象
 	window.Bank = window.$ = Bank;
-})(window)
+})(window);

@@ -40,4 +40,8 @@
 			});
 		};
 	});
-})(window)
+	Bank.fn.trigger = function(attr){
+		console.log(this[attr]());
+		this[attr]();
+	};
+})(window);

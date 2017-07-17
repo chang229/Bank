@@ -53,4 +53,4 @@
 			v.innerHTML = txt;
 		});
 	};
-})(window)
+})(window);
